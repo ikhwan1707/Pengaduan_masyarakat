@@ -19,4 +19,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard.welcome');
     });
+
+    Route::get('/user_profile', function () {
+        return view('admin.user.form');
+    });
 });
