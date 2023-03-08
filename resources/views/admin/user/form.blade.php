@@ -53,15 +53,31 @@
                   <p>{{ $user->jenkel }}</p>
                </div>
                <div class="mt-2">
-               <h6 class="mb-1">Alamat</h6>
-               <p>@if ($user->alamat ) $user->alamat @else Belum di isi @endif</p>
+                  <h6 class="mb-1">Alamat:</h6>
+                  <p>@if ($user->alamat ) {{$user->alamat}} @else Belum di isi @endif</p>
+               </div>
+               <div class="mt-2">
+                  <h6 class="mb-1">Provinsi:</h6>
+                  <p>{{$provinsi}}</p>
+               </div>
+               <div class="mt-2">
+                  <h6 class="mb-1">Kota:</h6>
+                  <p>{{$kota}}</p>
+               </div>
+               <div class="mt-2">
+                  <h6 class="mb-1">Kecamatan:</h6>
+                  <p>{{$kecamatan}}</p>
+               </div>
+               <div class="mt-2">
+                  <h6 class="mb-1">Kelurahan:</h6>
+                  <p>{{$kelurahan}}</p>
+               </div>
             </div>
-         </div>
       </div>
    </div>
 
    <div id="profile-update" class="tab-pane fade">
-      <form method="POST" action="{{ route('user_profile.update', $user->id) }}">
+      <form method="POST" action="{{ route('user_profile.update', $user->id) }}" enctype="multipart/form-data">
          @csrf 
          <input type="hidden" name="_method" value="PUT"> 
          <div class="row">
@@ -159,13 +175,13 @@
                                  </div>
                                  <div class="form-group col-md-4">
                                     <label class="form-label" for="rt">RT:</label>
-                                    <input type="text" class="form-control" id="rt" name="rt" placeholder="Kode Pos">
+                                    <input type="text" class="form-control" id="rt" name="rt" placeholder="RT">
                                  </div>
                                  <div class="form-group col-md-4">
                                     <label class="form-label" for="kode_pos">RW:</label>
-                                    <input type="text" class="form-control" id="rw" name="rw" placeholder="Kode Pos">
+                                    <input type="text" class="form-control" id="rw" name="rw" placeholder="RW">
                                  </div>
-                                 <div class="form-group col-md-6">
+                                 <div class="form-group col-md-4">
                                     <label class="form-label" for="kode_pos">Kode Pos:</label>
                                     <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Kode Pos">
                                  </div>

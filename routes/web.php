@@ -13,16 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['auth','admin'])->group(function () {
+    //admin
+    Route::get('dashboard', 'CustomAuthController@dashboard')->name('dashboard'); 
 
-//admin
-Route::get('dashboard', 'CustomAuthController@dashboard')->name('dashboard'); 
+    //page userprofile
+    Route::get('user_profile', 'UserprofileController@index')->name('user_profile');
+    Route::put('user_profile/{id}','UserprofileController@update')->name('user_profile.update');
+    Route::post('getKota', 'UserprofileController@getKota')->name('getKota');//getkota
+    Route::post('getKecamatan', 'UserprofileController@getKecamatan')->name('getKecamatan');//getkemacatan
+    Route::post('getKelurahan', 'UserprofileController@getKelurahan')->name('getKelurahan');//getkelurahan
+});
 
-//page userprofile
-Route::get('user_profile', 'UserprofileController@index')->name('user_profile');
-Route::put('user_profile/{id}','UserprofileController@update')->name('user_profile.update');
-Route::post('getKota', 'UserprofileController@getKota')->name('getKota');//getkota
-Route::post('getKecamatan', 'UserprofileController@getKecamatan')->name('getKecamatan');//getkemacatan
-Route::post('getKelurahan', 'UserprofileController@getKelurahan')->name('getKelurahan');//getkelurahan
+
 
 //masyarakat
 Route::get('/', function () {

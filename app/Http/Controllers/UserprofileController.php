@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Models\Regency;
 use App\Models\Village;
 use App\Models\District;
 use App\Models\Province;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class UserprofileController extends Controller
 {
@@ -20,8 +21,17 @@ class UserprofileController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $user_profile = User::where('id', $user->id)->get();
         $provinces = Province::all();
-        return view('admin.user.form', compact('user','provinces'));
+
+        foreach ($user_profile as $v) {
+            $provinsi = $v->province->name;
+            $kota = $v->regencies->name;
+            $kecamatan = $v->village->name;
+            $kelurahan = $v->district->name;
+        }
+       
+        return view('admin.user.form', compact('user','provinces','provinsi','kota','kecamatan','kelurahan'));
     }
 
     public function getKota(Request $request)
@@ -123,13 +133,24 @@ class UserprofileController extends Controller
             'password'       => 'required|min:6'
         ]); */
 
-        if ($request->file('foto') == null) {
-            $foto = $request->user()->foto;
+        $user = User::find($id);
+        if ($request->hasFile('foto') == null) {
+            $imgName = $request->user()->foto;
         }else {
-             $foto = $request->file('foto')->store('uploads');
+           
+            $image_path = public_path("uploads/".$user->foto);
+
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            
+            $foto = $request->file('foto');
+            $imgName = $foto->getClientOriginalName();
+            $destinationPath = public_path('/uploads/');
+            $foto->move($destinationPath, $imgName);
         }
         
-        $user = User::find($id);
+        
         $user->update([
             'name'              => $request->name,
             'email'             => $request->email,	
@@ -144,7 +165,7 @@ class UserprofileController extends Controller
             'regency_id'        => $request->regency_id,	
             'village_id'        => $request->village_id,	
             'district_id'       => $request->district_id,
-            'foto'              => $foto
+            'foto'              => $imgName
         ]);
 
         return redirect(route('user_profile'))->with(['Success'=>'Profile berhasil diperbaharui!']);

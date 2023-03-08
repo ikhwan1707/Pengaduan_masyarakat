@@ -9,9 +9,10 @@
 
 namespace App\Models;
 
-use AzisHapidin\IndoRegion\Traits\VillageTrait;
-use Illuminate\Database\Eloquent\Model;
+use App\User;
 use App\Models\District;
+use Illuminate\Database\Eloquent\Model;
+use AzisHapidin\IndoRegion\Traits\VillageTrait;
 
 /**
  * Village Model.
@@ -44,5 +45,10 @@ class Village extends Model
     public function district()
     {
         return $this->belongsTo(District::class);
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
     }
 }

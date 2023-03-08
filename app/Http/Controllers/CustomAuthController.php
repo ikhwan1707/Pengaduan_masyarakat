@@ -49,15 +49,16 @@ class CustomAuthController extends Controller
 
     public function register(Request $request)
     {
-        dd("ok");
-       /*  $request->validate([
+       
+        /* $request->validate([
             'name'          => 'required',
             'email'         => 'required|email|unique:users',
             'password'      => 'required|min:6|confirmed',
             'no_handphone'  => 'required|min:12'
-        ]);
+        ]); */
            
         $data = $request->all();
+        
         User::create([
             'name'          => $data['name'],
             'email'         => $data['email'],
@@ -65,7 +66,7 @@ class CustomAuthController extends Controller
             'no_handphone'  => $data['no_handphone']
         ]);
 
-        return redirect("dashboard")->withSuccess('You have signed-in'); */
+        return redirect("dashboard")->withSuccess('You have signed-in');
     }
 
     public function signOut() {
