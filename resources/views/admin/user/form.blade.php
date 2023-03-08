@@ -9,7 +9,7 @@
                      <img src="{{ asset('uploads/'.$user->foto) }}" alt="User-Profile" class="theme-color-default-img img-fluid rounded-pill avatar-100">
                      </div>
                   <div class="d-flex flex-wrap align-items-center mb-3 mb-sm-0">
-                     <h4 class="me-2 h4"> {{ $user->name}}</h4>
+                     <h4 class="me-2 h4"> {{ $user->firstname.' '.$user->lasttname}}</h4>
                      <span> - {{ $user->email}}</span>
                   </div>
                </div>
@@ -121,8 +121,16 @@
                      <div class="card-body">
                         <div class="new-user-info">
                               <div class="row">
-                                 <div class="form-group col-md-12">
-                                    <label class="form-label" for="name">Name:</label>
+                                 <div class="form-group col-md-4">
+                                    <label class="form-label" for="firstname">Nama Depan</label>:</label>
+                                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Nama Depan">
+                                 </div>
+                                 <div class="form-group col-md-4">
+                                    <label class="form-label" for="lasttname">Nama Belakang:</label>
+                                    <input type="text" class="form-control" id="lasttname" name="lasttname" placeholder="Nama Belakang">
+                                 </div>
+                                 <div class="form-group col-md-4">
+                                    <label class="form-label" for="name">Username:</label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                                  </div>
                                  <div class="form-group col-sm-12">
@@ -187,7 +195,7 @@
                                  </div>
                               </div>
                               <hr>
-                              <h5 class="mb-3">Security</h5>
+                              <h5 class="mb-3">Keamanan</h5>
                               <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="password">Password:</label>

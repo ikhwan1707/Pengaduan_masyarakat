@@ -205,7 +205,7 @@
                         <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ asset('uploads/'. Auth::user()->foto) }}" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded">
                             <div class="caption ms-3 d-none d-md-block ">
-                                <h6 class="mb-0 caption-title">{{ Auth::user()->name }} </h6>
+                                <h6 class="mb-0 caption-title">{{ $user->firstname.' '.$user->lasttname}} </h6>
                                 <p class="mb-0 caption-sub-title"> {{ Auth::user()->email}}</p>
                             </div>
                         </a>
