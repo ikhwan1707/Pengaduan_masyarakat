@@ -23,15 +23,15 @@ class UserprofileController extends Controller
         $user = Auth::user();
         $user_profile = User::where('id', $user->id)->get();
         $provinces = Province::all();
-
-        foreach ($user_profile as $v) {
+        
+        /* foreach ($user_profile as $v) {
             $provinsi = $v->province->name;
             $kota = $v->regencies->name;
             $kecamatan = $v->village->name;
             $kelurahan = $v->district->name;
-        }
+        } */
        
-        return view('admin.user.form', compact('user','provinces','provinsi','kota','kecamatan','kelurahan'));
+        return view('admin.user.form', compact('user','provinces','user_profile'));
     }
 
     public function getKota(Request $request)
@@ -126,12 +126,21 @@ class UserprofileController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request);
-       /*  $this->validate($request,[
-            'jenkel'      => 'required',
-            'no_handphone'      => 'required|numeric',	
-            'email'       => 'required',
-            'password'       => 'required|min:6'
-        ]); */
+        $rules = [
+            'nik'               => 'required',
+            'firstname'         => 'required',
+            'lasttname'         => 'required',
+            'name'              => 'required',
+            'jenkel'            => 'required',
+            'no_handphone'      => 'required',	
+            'email'             => 'required'
+        ];
+
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+
+        $this->validate($request, $rules, $customMessages);
 
         $user = User::find($id);
         if ($request->hasFile('foto') == null) {
@@ -152,6 +161,9 @@ class UserprofileController extends Controller
         
         
         $user->update([
+            'nik'               => $request->nik,
+            'firstname'         => $request->firstname,
+            'lasttname'         => $request->lasttname,
             'name'              => $request->name,
             'email'             => $request->email,	
             'no_handphone'      => $request->no_handphone,

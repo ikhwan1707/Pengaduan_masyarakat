@@ -43,14 +43,32 @@
                     <div class="col-md-10">
                        <div class="card card-transparent auth-card shadow-none d-flex justify-content-center mb-0">
                           <div class="card-body">
-                             <h2 class="mb-2 text-center">Sign Up</h2>
-                             <p class="text-center">Create your account.</p>
+                             <h2 class="mb-2 text-center">Daftar</h2>
+                             <p class="text-center">Silahkan Buat Akun Kamu.</p>
                              <form action="{{ route('register') }}" method="POST">
                             @csrf
                                 <div class="row">
                                    <div class="col-lg-6">
                                       <div class="form-group">
-                                         <label for="full-name" class="form-label">Full Name</label>
+                                         <label for="nik" class="form-label">NIK</label>
+                                         <input type="number" class="form-control" id="nik" name="nik" placeholder=" ">
+                                      </div>
+                                   </div>
+                                   <div class="col-lg-6">
+                                      <div class="form-group">
+                                         <label for="firstname" class="form-label">Nama Depan</label>
+                                         <input type="text" class="form-control" id="firstname" name="firstname" placeholder=" ">
+                                      </div>
+                                   </div>
+                                   <div class="col-lg-6">
+                                      <div class="form-group">
+                                         <label for="lasttname" class="form-label">Nama Belakang</label>
+                                         <input type="text" class="form-control" id="lasttname" name="lasttname" placeholder=" ">
+                                      </div>
+                                   </div>
+                                   <div class="col-lg-6">
+                                      <div class="form-group">
+                                         <label for="full-name" class="form-label">Userame</label>
                                          <input type="text" class="form-control" id="full-name" name="name" placeholder=" ">
                                       </div>
                                    </div>
@@ -62,8 +80,8 @@
                                    </div>
                                    <div class="col-lg-6">
                                       <div class="form-group">
-                                         <label for="phone" class="form-label">Phone No.</label>
-                                         <input type="text" class="form-control" id="phone" name="no_handphone" placeholder=" ">
+                                         <label for="phone" class="form-label">No Handphone</label>
+                                         <input type="number" class="form-control" id="phone" name="no_handphone" placeholder=" ">
                                       </div>
                                    </div>
                                    <div class="col-lg-6">
@@ -72,18 +90,18 @@
                                          <input type="password" class="form-control" id="password" name="password" placeholder=" ">
                                       </div>
                                    </div>
-                                   <div class="col-lg-12">
+                                   <div class="col-lg-6">
                                       <div class="form-group">
-                                         <label for="confirm-password" class="form-label">Confirm Password</label>
+                                         <label for="confirm-password" class="form-label">Konfirmasi Password</label>
                                          <input type="text" class="form-control" id="confirm-password" name="password_confirmation" placeholder=" ">
                                       </div>
                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                   <button type="submit" class="btn btn-primary">Sign Up</button>
+                                   <button type="submit" class="btn btn-primary">Daftar</button>
                                 </div>
                                 <p class="mt-3 text-center">
-                                   Already have an Account <a href="{{ Route('login')}}" class="text-underline">Sign In</a>
+                                  Sudah mempunyai akun <a href="{{ Route('login')}}" class="text-underline">Masuk</a>
                                 </p>
                              </form>
                           </div>

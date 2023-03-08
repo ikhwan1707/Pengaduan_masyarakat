@@ -64,17 +64,18 @@
                      
                         
                      @endif
+                     
                      <div class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
                         <div class="card-body">
                            
-                           <h2 class="mb-2 text-center">Sign In</h2>
-                           <p class="text-center">Login to stay connected.</p>
+                           <h2 class="mb-2 text-center">Masuk</h2>
+                           <p class="text-center">Silahkan Masuk dengan akun Anda.</p>
                            <form method="POST" action="{{ route('login') }}">
                             @csrf
                               <div class="row">
                                  <div class="col-lg-12">
                                     <div class="form-group">
-                                       <label for="name" class="form-label">Username Or Email</label>
+                                       <label for="name" class="form-label">Username atau Email</label>
                                        <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required  autofocus>
    
                                         @error('name')
@@ -96,19 +97,19 @@
                                         @enderror
                                     </div>
                                  </div>
-                                 <div class="col-lg-12 d-flex justify-content-between">
+                                 {{-- <div class="col-lg-12 d-flex justify-content-between">
                                     <div class="form-check mb-3">
                                        <input type="checkbox" class="form-check-input" id="customCheck1">
                                        <label class="form-check-label" for="customCheck1">Remember Me</label>
                                     </div>
                                     <a href="recoverpw.html">Forgot Password?</a>
-                                 </div>
+                                 </div> --}}
                               </div>
                               <div class="d-flex justify-content-center">
-                                 <button type="submit" class="btn btn-primary">Sign In</button>
+                                 <button type="submit" class="btn btn-primary">Masuk</button>
                               </div>
                               <p class="mt-3 text-center">
-                                 Don’t have an account? <a href="{{ Route('registration')}}" class="text-underline">Click here to sign up.</a>
+                                 Belum mempunyai akun? <a href="{{ Route('registration')}}" class="text-underline">Klik disini untuk daftar.</a>
                               </p>
                            </form>
                         </div>
