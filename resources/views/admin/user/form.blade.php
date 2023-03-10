@@ -28,6 +28,7 @@
 </div>
 <div class="col-lg-12">
    <div class="profile-content tab-content">
+      @include('sweetalert::alert')
       @if (session('Success'))
          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -159,7 +160,7 @@
                               <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="nik">NIK</label>:</label>
-                                    <input type="number" class="form-control" id="nik" name="firstname" placeholder="Nama Depan" >
+                                    <input type="number" class="form-control" id="nik" name="nik" placeholder="NIK" >
                                     
                                     @if ($errors->has('nik'))
                                        <div class="text-danger">
@@ -198,9 +199,8 @@
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">Jenis Kelamin:</label>
                                     <select name="jenkel" class="selectpicker form-control" data-style="py-0">
-                                       <option>Pilih Jenis Kelamin</option>
-                                       <option>Laki-Laki</option>
-                                       <option>Perempuan</option>
+                                       <option value="Laki-Laki">Laki-Laki</option>
+                                       <option value="Perempuan">Perempuan</option>
                                     </select>
                                     @if ($errors->has('jenkel'))
                                        <div class="text-danger">

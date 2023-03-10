@@ -33,7 +33,7 @@ class CustomAuthController extends Controller
                 return redirect()->intended('dashboard')
                         ->withSuccess('Signed in');
             } else{
-                return redirect()->intended('dashboardMasyarakat')
+                return redirect()->route('dashboardMasyarakat')
                         ->withSuccess('Signed in');
             }
         }else{
@@ -60,9 +60,9 @@ class CustomAuthController extends Controller
         $data = $request->all();
         
         User::create([
-            'nik'          => $data['nik'],
-            'firstname'          => $data['firstname'],
-            'lasttname'          => $data['lasttname'],
+            'nik'           => $data['nik'],
+            'firstname'     => $data['firstname'],
+            'lasttname'     => $data['lasttname'],
             'name'          => $data['name'],
             'email'         => $data['email'],
             'password'      => bcrypt($data['password']),
@@ -88,12 +88,12 @@ class CustomAuthController extends Controller
         return redirect("login")->withSuccess('You are not allowed to access');
     }
 
-    public function dashboardMasyarakat()
+    /* public function dashboardMasyarakat()
     {
         if(Auth::check()){
             return view('masyarakat.index');
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');
-    }
+    } */
 }

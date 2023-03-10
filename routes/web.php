@@ -13,26 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth','admin'])->group(function () {
+Route::middleware(['auth','ceklevel:admin'])->group(function () {
     //admin
     Route::get('dashboard', 'CustomAuthController@dashboard')->name('dashboard'); 
-
-    //page userprofile
-    Route::get('user_profile', 'UserprofileController@index')->name('user_profile');
-    Route::put('user_profile/{id}','UserprofileController@update')->name('user_profile.update');
-    Route::post('getKota', 'UserprofileController@getKota')->name('getKota');//getkota
-    Route::post('getKecamatan', 'UserprofileController@getKecamatan')->name('getKecamatan');//getkemacatan
-    Route::post('getKelurahan', 'UserprofileController@getKelurahan')->name('getKelurahan');//getkelurahan
+   
 });
 
-
-
-//masyarakat
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth','ceklevel:masyarakat'])->group(function () {
+    //masyarakat
+    Route::get('masyarakat_pengaduan', 'MasyarakatController@dashboard')->name('masyarakat_pengaduan.dashboard'); 
+    Route::get('masyarakat_pengaduan/create', 'MasyarakatController@create')->name('masyarakat_pengaduan.create'); 
+    Route::post('masyarakat_pengaduan', 'MasyarakatController@store')->name('masyarakat_pengaduan.store'); 
 });
 
-Route::get('dashboardMasyarakat', 'CustomAuthController@dashboardMasyarakat')->name('dashboard'); 
+Route::get('/', 'MasyarakatController@index')->name('dashboardMasyarakat');
+
+Route::get('user_profile', 'UserprofileController@index')->name('user_profile');
+Route::put('user_profile/{id}','UserprofileController@update')->name('user_profile.update');
+Route::post('getKota', 'UserprofileController@getKota')->name('getKota');//getkota
+Route::post('getKecamatan', 'UserprofileController@getKecamatan')->name('getKecamatan');//getkemacatan
+Route::post('getKelurahan', 'UserprofileController@getKelurahan')->name('getKelurahan');//getkelurahan
 
 // Authentication Routes...
 Route::get('login', 'CustomAuthController@showLoginForm')->name('login');

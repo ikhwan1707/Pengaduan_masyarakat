@@ -55,6 +55,7 @@
         </div>
       <!-- Footer Section Start -->
         @include('admin\layouts\footer')
+        
       <!-- Footer Section End -->    
     </main>
     <!-- Wrapper End-->

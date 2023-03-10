@@ -15,12 +15,31 @@ class isAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$levels)
     {
-        if (\Auth::user() &&  \Auth::user()->level == 'admin' ) {
-            return $next($request);
-       }
+        $roles = array_slice(func_get_args(), 2);
 
-       return back()->with('error','Opps, You\'re not Admin');
+        foreach ($roles as $role) { 
+            $user = \Auth::user()->level;
+            if( $user == $role){
+                return $next($request);
+            }
+        }
+
+        /* if (\Auth::user() &&  in_array(\Auth::user()->level, $levels) ) {
+            return $next($request);
+       } */
+
+       return back()->with('error','Opps, Error');
     }
 }
+
+/* public function handle(Request $request, Closure $next, ...$levels)
+{
+    if (in_array($request->user()->level, $levels)) {
+        return $next($request);
+    }
+
+
+   return back()->with('error','Opps');
+} */

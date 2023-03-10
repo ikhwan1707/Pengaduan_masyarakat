@@ -126,7 +126,7 @@ class UserprofileController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request);
-        $rules = [
+       /*  $rules = [
             'nik'               => 'required',
             'firstname'         => 'required',
             'lasttname'         => 'required',
@@ -140,9 +140,10 @@ class UserprofileController extends Controller
             'required' => 'The :attribute field is required.'
         ];
 
-        $this->validate($request, $rules, $customMessages);
+        $this->validate($request, $rules, $customMessages); */
 
         $user = User::find($id);
+       // dd($user);
         if ($request->hasFile('foto') == null) {
             $imgName = $request->user()->foto;
         }else {
@@ -161,22 +162,22 @@ class UserprofileController extends Controller
         
         
         $user->update([
-            'nik'               => $request->nik,
-            'firstname'         => $request->firstname,
-            'lasttname'         => $request->lasttname,
-            'name'              => $request->name,
-            'email'             => $request->email,	
-            'no_handphone'      => $request->no_handphone,
-            'password'          => bcrypt($request->password),
-            'jenkel'	        => $request->jenkel,
-            'alamat'            => $request->alamat,
-            'rt'                => $request->rt,
-            'rw'                => $request->rw,
-            'kode_pos'          => $request->kode_pos,	
-            'province_id'       => $request->province_id,	
-            'regency_id'        => $request->regency_id,	
-            'village_id'        => $request->village_id,	
-            'district_id'       => $request->district_id,
+            'nik'               => $request->nik == null ? $user->nik : $request->nik,
+            'firstname'         => $request->firstname == null ? $user->firstname : $request->firstname,
+            'lasttname'         => $request->lasttname == null ? $user->lasttname : $request->lasttname,
+            'name'              => $request->name == null ? $user->name : $request->name,
+            'email'             => $request->email == null ? $user->email : $request->email,	
+            'no_handphone'      => $request->no_handphone == null ? $user->no_handphone : $request->no_handphone,
+            'password'          => $request->password == null ? $user->password :  bcrypt($request->password),
+            'jenkel'	        => $request->jenkel == null ? $user->jenkel : $request->jenkel,
+            'alamat'            => $request->alamat == null ? $user->alamat : $request->alamat,
+            'rt'                => $request->rt == null ? $user->rt : $request->rt,
+            'rw'                => $request->rw == null ? $user->rw : $request->rw,
+            'kode_pos'          => $request->kode_pos == null ? $user->kode_pos : $request->kode_pos,	
+            'province_id'       => $request->province_id == null ? $user->province_id : $request->province_id,	
+            'regency_id'        => $request->regency_id == null ? $user->regency_id : $request->regency_id ,	
+            'village_id'        => $request->village_id == null ? $user->village_id : $request->village_id ,	
+            'district_id'       => $request->district_id == null ? $user->district_id : $request->district_id,
             'foto'              => $imgName
         ]);
 
