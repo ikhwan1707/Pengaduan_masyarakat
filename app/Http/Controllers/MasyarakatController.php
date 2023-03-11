@@ -22,9 +22,11 @@ class MasyarakatController extends Controller
         return view('masyarakat.index');
     }
 
-    public function dashboard()
+    public function history()
     {
-        return view('masyarakat.dashboard');
+        $nik = Auth::user()->nik;
+        $data_pengaduan =  Pengaduan::where('nik', $nik)->get();
+        return view('masyarakat.history', compact('data_pengaduan'));
     }
 
     /**

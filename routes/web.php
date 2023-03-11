@@ -21,7 +21,7 @@ Route::middleware(['auth','ceklevel:admin'])->group(function () {
 
 Route::middleware(['auth','ceklevel:masyarakat'])->group(function () {
     //masyarakat
-    Route::get('masyarakat_pengaduan', 'MasyarakatController@dashboard')->name('masyarakat_pengaduan.dashboard'); 
+    Route::get('masyarakat_pengaduan', 'MasyarakatController@history')->name('masyarakat_pengaduan.history'); 
     Route::get('masyarakat_pengaduan/create', 'MasyarakatController@create')->name('masyarakat_pengaduan.create'); 
     Route::post('masyarakat_pengaduan', 'MasyarakatController@store')->name('masyarakat_pengaduan.store'); 
 });

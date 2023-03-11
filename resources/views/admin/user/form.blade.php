@@ -234,7 +234,7 @@
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="province_id">Provinsi:</label>
                                     <select name="province_id" id="province_id" class="selectpicker form-control" data-style="py-0">
-                                       <option>Pilih Provinsi...</option>
+                                       <option value="">Pilih Provinsi...</option>
                                        @foreach ( $provinces as $provinsi)
                                           <option value="{{ $provinsi->id}}">{{ $provinsi->name}}</option>
                                        @endforeach
