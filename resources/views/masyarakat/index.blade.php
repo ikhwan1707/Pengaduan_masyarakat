@@ -43,7 +43,7 @@
                         </ul>
                         <!-- menu links -->
                            @if (Auth::user())
-                              @if (Auth::user()->level == 'masyakarat')
+                              @if (Auth::user())
                                  <ul class="menu-links">
                                     <li class="active">
                                        <a href="">Home</a>
