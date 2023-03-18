@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TestSendingEmail;
 use Carbon\Carbon;
 use App\Models\Pengaduan;
 use App\Models\Pengaduan_image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class MasyarakatController extends Controller
@@ -47,6 +49,8 @@ class MasyarakatController extends Controller
      */
     public function store(Request $request)
     {
+      
+        $input = $request->all();
         $this->validate($request,[
 
     		'tgl_pengaduan' => 'required',
@@ -55,6 +59,7 @@ class MasyarakatController extends Controller
     	]);
 
         $nik = Auth::user()->nik;
+        $email = Auth::user()->email;
 
         $uniqID = Carbon::now()->timestamp . uniqid();
         $data = new Pengaduan;
@@ -74,6 +79,14 @@ class MasyarakatController extends Controller
             $pimage->save();
         }
         $data->save();
+        
+        $data_p = [
+            'tgl_pengaduan' => $request->tgl_pengaduan,
+            'isi_laporan' => $request->isi_laporan
+
+        ];
+
+        Mail::to($email)->send(new TestSendingEmail($data_p));
         return redirect('/masyarakat_pengaduan');
     }
 

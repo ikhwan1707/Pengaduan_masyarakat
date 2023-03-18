@@ -44,10 +44,10 @@ Route::get('registration', 'CustomAuthController@showRegistrationForm')->name('r
 Route::post('register', 'CustomAuthController@register')->name('register');
 
 // Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+Route::get('password/reset', 'CustomAuthController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'CustomAuthController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'CustomAuthController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'CustomAuthController@reset')->name('password.update');
 
 // Confirm Password (added in v6.2)
 Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');

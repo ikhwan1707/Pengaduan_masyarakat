@@ -19,14 +19,6 @@
       <link rel="stylesheet" href="{{ asset('Bizbag/html/css/responsive.css') }}">
    </head>
    <body>
-      <!-- loading -->
-      {{-- <div id="loading">
-         <div id="loading-center">
-            <img src="{{ asset('Bizbag/html/images/loader.gif') }}" alt="loader">
-         </div>
-      </div> --}}
-      <!-- loading End -->
-      <!-- Header Start -->
       <header id="main-header" class="header-one">
    <!-- menu start -->
    <nav id="menu-1" class="mega-menu" data-color="">
@@ -43,11 +35,14 @@
                         </ul>
                         <!-- menu links -->
                            @if (Auth::user())
-                              @if (Auth::user())
+                              @if (Auth::user()->level == 'masyarakat')
                                  <ul class="menu-links">
                                     <li class="active">
                                        <a href="">Home</a>
                                     </li>
+                                    <li class="">
+                                       <a href="{{ Route('masyarakat_pengaduan.create')}}">Laporkan Pengaduan</a>
+                                   </li>
                                     <li class="">
                                        <a href="{{ Route('masyarakat_pengaduan.history')}}">Catatan Pengaduan</a>
                                     </li>
@@ -107,7 +102,7 @@
                   <p class="pr-lg-4 mb-4">Sampaikan laporan masalah anda di sini, kami akan memprosesnya dengan cepat.</p>
                   
                   @if (Auth::user())
-                     @if (Auth::user()->level == 'masyakarat')
+                     @if (Auth::user()->level == 'masyarakat')
                         <a href="{{ route('masyarakat_pengaduan.create')}}" class="btn slide-button button">
                            <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M11.8251 15.2171H12.1748C14.0987 15.2171 15.731 13.985 16.3054 12.2764C16.3887 12.0276 16.1979 11.7713 15.9334 11.7713H14.8562C14.5133 11.7713 14.2362 11.4977 14.2362 11.16C14.2362 10.8213 14.5133 10.5467 14.8562 10.5467H15.9005C16.2463 10.5467 16.5263 10.2703 16.5263 9.92875C16.5263 9.58722 16.2463 9.31075 15.9005 9.31075H14.8562C14.5133 9.31075 14.2362 9.03619 14.2362 8.69849C14.2362 8.35984 14.5133 8.08528 14.8562 8.08528H15.9005C16.2463 8.08528 16.5263 7.8088 16.5263 7.46728C16.5263 7.12575 16.2463 6.84928 15.9005 6.84928H14.8562C14.5133 6.84928 14.2362 6.57472 14.2362 6.23606C14.2362 5.89837 14.5133 5.62381 14.8562 5.62381H15.9886C16.2483 5.62381 16.4343 5.3789 16.3645 5.13113C15.8501 3.32401 14.1694 2 12.1748 2H11.8251C9.42172 2 7.47363 3.92287 7.47363 6.29729V10.9198C7.47363 13.2933 9.42172 15.2171 11.8251 15.2171Z" fill="currentColor"></path>
