@@ -102,7 +102,7 @@
                   <div class="iq-masonry-block">
                      <div class="isotope-filters isotope-tooltip">
                         <button data-filter="" class="active">Semua</button>
-                        <button data-filter=".0">Terkirim</button>
+                        <button data-filter=".0">Menunggu Konfirmasi</button>
                         <button data-filter=".proses">Proses</button>
                         <button data-filter=".selesai">Selesai</button>
                      </div>
@@ -126,9 +126,9 @@
                                        <ul class="iq-blogtag">
                                           <li>
                                              @if($pengaduan->status == '0')
-                                             <a>Terkirim</a>
+                                             <a>Menunggu Konfirmasi</a>
                                              @elseif ($pengaduan->status == 'proses')
-                                             <a>Proses</a>
+                                             <a>Sedang Proses</a>
                                              @else
                                              <a>Selesai</a>
                                              @endif

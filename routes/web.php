@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth','ceklevel:admin'])->group(function () {
+Route::middleware(['auth','ceklevel:admin,'])->group(function () {
     //admin
     Route::get('dashboard', 'CustomAuthController@dashboard')->name('dashboard'); 
+
+    Route::get('pengaduan', 'PengaduanAdminController@index')->name('pengaduan'); 
+    Route::get('pengaduan/{id}', 'PengaduanAdminController@show')->name('pengaduan.view'); 
+    Route::get('pengaduan/{id}/edit', 'PengaduanAdminController@edit')->name('pengaduan.edit'); 
+    Route::put('pengaduan/{id}','PengaduanAdminController@update')->name('pengaduan.update');
+    Route::delete('pengaduan/{id}', 'PengaduanAdminController@destroy')->name('pengaduan.destroy'); 
+    Route::get('pengaduan/status/{id}','PengaduanAdminController@finish')->name('pengaduan.status');
    
 });
 

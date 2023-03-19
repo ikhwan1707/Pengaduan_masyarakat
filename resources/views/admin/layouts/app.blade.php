@@ -112,5 +112,19 @@
      
       
     </script>
+    <script>
+      if ($('#table-data')) {
+        $('#table-data').DataTable({
+          language: {
+                url: "{{ asset('js/bahasa.json')}}"
+          },
+          "columnDefs": [
+            { "width": "20%", "targets" : 2 }
+          ]
+        })
+      }
+    
+      
+    </script>
   </body>
 </html>

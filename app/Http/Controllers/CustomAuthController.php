@@ -173,7 +173,7 @@ class CustomAuthController extends Controller
 
         DB::table('password_resets')->where(['email' => $request->email])->delete();
 
-        return redirect('/login')->with('success', 'Your password has been changed!');
+        return redirect('/login')->with('message', 'Your password has been changed!');
     }
 
     public function signOut()
