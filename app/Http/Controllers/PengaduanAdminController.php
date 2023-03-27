@@ -83,11 +83,12 @@ class PengaduanAdminController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'tanggapan' =>  'required|string|'
+            'tanggapan' =>  'required|string',
+            'id_pengaduan'  => 'required|string|unique:tanggapans',
         ]);
 
         $data = new Tanggapan;
-        $data->id_pengaduan =  $id;
+        $data->id_pengaduan =  $request->id_pengaduan;
         $data->tgl_tanggapan = Carbon::now()->format('Y-m-d');
         $data->tanggapan = $request->tanggapan;
         $data->user_id = Auth::user()->id;
@@ -116,7 +117,7 @@ class PengaduanAdminController extends Controller
 
         Mail::to($send_tanggapan->email)->send(new SendTanggapan($data_tanggapan));
 
-        return redirect(route('pengaduan'))->with(['success'=>'Berhasil diperbaharui!']);
+        return redirect(route('pengaduan'))->with(['success' => 'Berhasil diperbaharui!']);
     }
 
     public function finish(Request $request, $id)

@@ -19,9 +19,10 @@ class isAdmin
     {
         $roles = array_slice(func_get_args(), 2);
 
-        foreach ($roles as $role) { 
+        foreach ($roles as $role) {
             $user = \Auth::user()->level;
-            if( $user == $role){
+
+            if ($user == $role) {
                 return $next($request);
             }
         }
@@ -30,7 +31,7 @@ class isAdmin
             return $next($request);
        } */
 
-       return back()->with('error','Opps, Error');
+        return back()->with('error', 'Opps, Error');
     }
 }
 

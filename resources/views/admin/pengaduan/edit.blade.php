@@ -6,6 +6,7 @@
             <div class="profile-content tab-content">
                 <div id="profile-feed" class="tab-pane fade active show">
                     <div class="card">
+                        
                         <div class="card-header d-flex align-items-center justify-content-between pb-4">
                             <div class="header-title">
                                 <div class="d-flex flex-wrap">
@@ -46,6 +47,8 @@
                                     method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="_method" value="PUT">
+                                    <input type="hidden" name="id_pengaduan" value="{{ $data_edit_pengaduan->id_pengaduan }}">
+                                    
                                     <input type="text" class="form-control rounded" name="tanggapan"
                                         placeholder="Tanggapan">
                                     <div class="comment-attagement d-flex">
@@ -63,6 +66,7 @@
                                         </button>
                                     </div>
                                 </form>
+                                <p class="text-danger">{{ $errors->first('id_pengaduan') }}</p>
                             </div>
                         </div>
                     </div>

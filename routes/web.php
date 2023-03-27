@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DatauserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth','ceklevel:admin,'])->group(function () {
+Route::middleware(['auth','ceklevel:admin,petugas'])->group(function () {
     //admin
     Route::get('dashboard', 'CustomAuthController@dashboard')->name('dashboard'); 
 
@@ -24,6 +25,10 @@ Route::middleware(['auth','ceklevel:admin,'])->group(function () {
     Route::delete('pengaduan/{id}', 'PengaduanAdminController@destroy')->name('pengaduan.destroy'); 
     Route::get('pengaduan/status/{id}','PengaduanAdminController@finish')->name('pengaduan.status');
    
+    Route::get('user','DatauserController@index')->name('user');
+    Route::get('user/{id}', 'DatauserController@edit')->name('user.edit');
+    Route::put('users/{id}', 'DatauserController@update')->name('user.update');
+    Route::delete('users/{id}', 'DatauserController@destroy')->name('user.destroy');
 });
 
 Route::middleware(['auth','ceklevel:masyarakat'])->group(function () {
@@ -65,4 +70,3 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify'); // v6.x
 /* Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify'); // v5.x */
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
-

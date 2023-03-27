@@ -53,7 +53,7 @@
                                                 <input type="hidden" name="_method" value="DELETE">
 
                                                 <a class="btn btn-sm btn-icon btn-success" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="View"
+                                                    data-placement="top" title="View" data-original-title="View"
                                                     href="{{ route('pengaduan.view', $v->id_pengaduan)}}">
                                                     <span class="btn-inner">
                                                         <svg width="32" viewBox="0 0 24 24" fill="none"
@@ -74,7 +74,7 @@
 
                                                 @if($v->status == '0')
                                                 <a class="btn btn-sm btn-icon btn-warning" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="Edit"
+                                                    data-placement="top" title="Beri tanggapan" data-original-title="Edit"
                                                     href="{{ route('pengaduan.edit', $v->id_pengaduan)}}">
                                                     <span class="btn-inner">
                                                         <svg width="20" viewBox="0 0 24 24" fill="none"
@@ -98,7 +98,7 @@
                                                 @if($v->status == 'proses')
 
                                                 <a class="btn btn-sm btn-icon btn-primary" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="Edit"
+                                                    data-placement="top" title="Selesai" data-original-title="Edit"
                                                     href="{{ route('pengaduan.status', $v->id_pengaduan)}}">
                                                     <span class="btn-inner">
                                                         <svg width="32" viewBox="0 0 24 24" fill="none"
@@ -118,7 +118,7 @@
 
 
                                                 <button class="btn btn-sm btn-icon btn-danger" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="Delete">
+                                                    data-placement="top" title="Hapus" data-original-title="Delete">
                                                     <span class="btn-inner">
                                                         <svg width="20" viewBox="0 0 24 24" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
@@ -142,16 +142,6 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>#</th>
-                                    <th>NIK</th>
-                                    <th>Isi Pengaduan</th>
-                                    <th>Tanggal Pengaduan</th>
-                                    <th>Status Pengaduan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>

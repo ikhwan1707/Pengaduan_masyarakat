@@ -76,9 +76,9 @@
                         <span class="mini-icon">-</span>
                     </a>
                 </li>
-                @if (Auth::user() && Auth::user()->level == 'admin' || Auth::user()->level == 'petugas')
+                @if (Auth::user() && Auth::user()->level == 'admin')
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/user">
                         <i class="icon">
                             <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -104,6 +104,8 @@
                         <span class="item-name">User</span>
                     </a>
                 </li>
+                @endif
+                @if (Auth::user() && Auth::user()->level == 'admin' || Auth::user()->level == 'petugas')
                 <li class="nav-item">
                     <a class="nav-link" href="/pengaduan">
                         <i class="icon">
