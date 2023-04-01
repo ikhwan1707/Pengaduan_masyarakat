@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Pengaduan;
 use App\Mail\ResetPassword;
+use App\Models\Tanggapan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -187,7 +189,13 @@ class CustomAuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('admin.dashboard.welcome');
+            $count_user = User::count();
+            $cout_pengaduan = Pengaduan::count();
+            $count_tanggapan = Tanggapan::count();
+            $count_konfirmasi = Pengaduan::where('status','0')->count();
+            $count_proses = Pengaduan::where('status','proses')->count();
+            $count_selesai = Pengaduan::where('status','selesai')->count();
+            return view('admin.dashboard.welcome', compact('cout_pengaduan', 'count_user','count_tanggapan', 'count_konfirmasi', 'count_proses', 'count_selesai'));
         }
 
         return redirect("login")->withSuccess('You are not allowed to access');

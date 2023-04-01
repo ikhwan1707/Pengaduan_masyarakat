@@ -138,6 +138,7 @@ class PengaduanAdminController extends Controller
     public function destroy($id)
     {
         Pengaduan::where('id_pengaduan', $id)->delete();
+        Tanggapan::where('id_pengaduan', $id)->delete();
         return redirect(route('pengaduan'))->with(['success'=>'Pengaduan berhasil dihapus!']);
     }
 }
